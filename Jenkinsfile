@@ -46,8 +46,9 @@ pipeline {
             export KUBECONFIG=$KUBECONFIG
 
             # ensure bitnami repo for mariadb (dependency)
-            helm repo add bitnami https://charts.bitnami.com/bitnami
-            helm repo update
+            export HELM_EXPERIMENTAL_OCI=1
+            "oci://registry-1.docker.io/bitnamicharts"
+            helm dependency update ./charts/multitier
 
             # update dependencies (if needed)
             helm dependency update ./charts/multitier
