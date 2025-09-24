@@ -47,8 +47,6 @@ pipeline {
 
             # ensure bitnami repo for mariadb (dependency)
             export HELM_EXPERIMENTAL_OCI=1
-            helm pull oci://registry-1.docker.io/bitnamicharts/mariadb --version 18.0.0
-            helm install my-mariadb oci://registry-1.docker.io/bitnamicharts/mariadb --version 18.0.0
             helm dependency update ./charts/multitier
 
             # update dependencies (if needed)
