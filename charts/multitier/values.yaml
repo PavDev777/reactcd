@@ -1,0 +1,26 @@
+# override subchart values
+frontend:
+  image:
+    repository: "pavdev777/frontend"
+    tag: "latest"
+  ingress:
+    enabled: true
+    host: frontend.local
+
+backend:
+  image:
+    repository: "pavdev777/backend"
+    tag: "latest"
+  database:
+    # DB host will be releaseName-mariadb by convention
+    host: "{{ .Release.Name }}-mariadb"
+    user: "wpuser"
+    password: "wp_pass"
+    name: "mydb"
+
+mariadb:
+  auth:
+    rootPassword: "rootpass"
+    database: "mydb"
+    username: "wpuser"
+    password: "wp_pass"

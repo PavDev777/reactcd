@@ -1,0 +1,12 @@
+replicaCount: 1
+image:
+  repository: "pavdev777/backend"
+  tag: "latest"
+service:
+  type: ClusterIP
+  port: 3000
+database:
+  host: ""          # will be set by parent chart to <release>-mariadb
+  user: "wpuser"
+  password: "wp_pass"
+  name: "mydb"
