@@ -49,9 +49,6 @@ pipeline {
             export HELM_EXPERIMENTAL_OCI=1
             helm dependency update ./charts/multitier
 
-            # update dependencies (if needed)
-            helm dependency update ./charts/multitier
-
             # deploy, passing tags built above
             helm upgrade --install multitier ./charts/multitier -n ${NAMESPACE} --create-namespace \
               --set frontend.image.tag=${BUILD_NUMBER} \
